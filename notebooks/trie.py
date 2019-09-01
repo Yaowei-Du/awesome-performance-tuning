@@ -26,22 +26,16 @@ class Node():
 class SeperateNode(Node):
     def traversal(self, char, params):
         if DYNAMIC in self.children:
-           params.append(char)
-           return self.children[DYNAMIC]
+            params.append(char)
+            return self.children[DYNAMIC]
         else:
-           if char in self.children:
-               return self.children[char]
-           else:
-               return None
+            return super().traversal(char)
 
 
 class DynamicNode(Node):
     def traversal(self, char, params):
         if char == SEPERATOR:
-            if char in self.children:
-                return self.children[char]
-            else:
-                return None
+            return super().traversal(char)
         else:
             params[-1] += char
             return self
